@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
-const port = 1996;
+const port = process.env.PORT || 3000;
 const db = require('../database/db.js')
-const { LoginData } = require('../database/loginSchema.js');
+const {LoginData} = require('../database/loginSchema.js');
 
 const app = express();
 app.use(bodyParser.json());
