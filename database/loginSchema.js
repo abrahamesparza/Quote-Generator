@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const loginData = new Schema({
+const loginSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
@@ -9,8 +9,8 @@ const loginData = new Schema({
   age: String
 });
 
-const LoginData = mongoose.model('LoginData', loginData);
+const Users = mongoose.model('Users', loginSchema);
 
 module.exports = {
-  LoginData
+  Users
 };
