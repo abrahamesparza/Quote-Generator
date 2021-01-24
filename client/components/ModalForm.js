@@ -22,7 +22,10 @@ const ModalForm = ({ show }) => {
     });
   };
 
-
+  /*
+    currently, only the last prop and value are sending to my API
+    need to resolve so that all form data is sent to API
+  */
   let handleSubmit = (e) => {
     e.preventDefault()
     let data = user;
