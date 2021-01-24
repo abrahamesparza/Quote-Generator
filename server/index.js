@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
 
 app.get('/users', (req, res) => {
   Users.find((err, data) => {
+    console.log('existing users:', data);
+
     if (err) res.status(500).send(err);
     else res.status(200).send(data);
   });
@@ -24,7 +26,7 @@ app.get('/users', (req, res) => {
 
 app.post('/new/user', (req, res) => {
   let userData = req.body;
-  console.log(userData);
+  console.log('userData:', userData);
   Users.create(userData, (err, data) => {
     if (err) res.status(500).send(err);
     else res.status(201).send(data);
