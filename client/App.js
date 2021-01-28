@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './app.css';
 import ModalForm from './components/ModalForm.js';
 
@@ -14,6 +14,14 @@ const App = () => {
     }
   }
 
+  let closeModal = () => {
+    setTimeout(() => {
+      if (show === true) {
+        setShow(false)
+      }
+    }, 100)
+  }
+
   return (
     <div className='container'>
     <header>
@@ -24,7 +32,7 @@ const App = () => {
     <aside>Aside</aside>
     <main>
       <div className='modalPopup'>
-      <ModalForm show={show}/>
+      <ModalForm show={show} closeModal={closeModal}/>
       </div>
     </main>
     <footer>Footer</footer>
