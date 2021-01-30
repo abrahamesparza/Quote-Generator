@@ -61,7 +61,7 @@ const ModalForm = ({ show, closeModal }) => {
           Age:<br/>
           <input  type='text' name='age' onChange={handleChange}/>
         </label><br/>
-        <input type='submit' value='Submit' onClick={closeModal}/>
+        <input className='submitBtn' type='submit' value='Submit' onClick={closeModal}/>
       </form>
     </div>
   )

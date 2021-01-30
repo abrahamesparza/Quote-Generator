@@ -21,7 +21,8 @@ header {
   justify-content: space-evenly;
   align-items: center;
   padding: 10px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+  background-color: rgb(235, 235, 235);
 }
 
 aside {
