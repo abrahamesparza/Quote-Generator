@@ -2,7 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
-const port = process.env.PORT || 3001;
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+const port = process.env.PORT || 3003;
+
 const db = require('../database/db.js')
 const { Users } = require('../database/loginSchema.js');
 
@@ -26,10 +31,13 @@ app.get('/users', (req, res) => {
 
 app.post('/new/user', (req, res) => {
   let userData = req.body;
-  console.log('userData:', userData);
-  Users.create(userData, (err, data) => {
-    if (err) res.status(500).send(err);
-    else res.status(201).send(data);
+  bcrypt.hash(userData.password, saltRounds, (err, hash) => {
+    userData.password = hash;
+    if (err) console.log('Error hashing', err);
+    Users.create(userData, (err, data) => {
+      if (err) res.status(500).send(err);
+      else res.status(201).send(data);
+    });
   });
 });
 
