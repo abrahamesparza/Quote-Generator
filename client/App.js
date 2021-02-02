@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './app.css';
-import ModalForm from './components/ModalForm.js';
+import './styles/app.css';
+import Header from './components/Header';
+import Main from './components/Main';
+import Aside from './components/Aside';
+import Footer from './components/Footer';
 
 const App = () => {
   let [show, setShow] = useState(false)
@@ -24,18 +27,10 @@ const App = () => {
 
   return (
     <div className='container'>
-    <header>
-      <div>Home</div>
-      <div>About</div>
-      <div onClick={showModal}>Join</div>
-    </header>
-    <aside>Aside</aside>
-    <main>
-      <div className='modalPopup'>
-      <ModalForm show={show} closeModal={closeModal}/>
-      </div>
-    </main>
-    <footer>Footer</footer>
+      <Header showModal={showModal}/>
+      <Aside />
+      <Main show={show} closeModal={closeModal}/>
+      <Footer />
     </div>
   )
 }

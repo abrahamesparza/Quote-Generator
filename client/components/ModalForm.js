@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './modal.css'
-// import { useForm } from 'react-hook-form'
+import '../styles/modal.css'
 
 
 const ModalForm = ({ show, closeModal }) => {
-  // const { register, handleSubmit } = useForm();
   if (!show) {
     return null;
   }

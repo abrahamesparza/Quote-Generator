@@ -1,0 +1,6 @@
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  /* background: yellow; */
+  border: 1px solid yellow;
+}
