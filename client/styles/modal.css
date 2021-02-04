@@ -13,7 +13,9 @@
   border: 3px solid rgb(252, 193, 203);
   box-shadow: -5px 5px 5px rgb(167, 167, 167);
 }
-
+.submitBtn {
+  font-family: "Bebas Neue", cursive;
+}
 .form-text {
   justify-content: center;
   text-align: center;
