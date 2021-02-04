@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: "Bebas Neue", cursive;
 }
 /* css grid - two dimensional design - for layout & flexbox - one dimesnional design for alignment BOTH are very powerful together */
 .container {

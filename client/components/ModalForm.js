@@ -35,27 +35,34 @@ const ModalForm = ({ show, closeModal }) => {
   return (
     <div className='form-container'>
       <form className='form-space' onSubmit={onSubmit}>
-        <label>
-          First Name:<br/>
-          <input  type='text' name='firstName' onChange={handleChange}/>
+        <label className='form-text'>
+          First Name:
         </label><br/>
-        <label>
-          Last Name:<br/>
-          <input  type='text' name='lastName' onChange={handleChange}/>
+        <input  type='text' name='firstName' onChange={handleChange}/><br/><br/>
+
+        <label className='form-text'>
+          Last Name:
         </label><br/>
-        <label>
-          Email:<br/>
-          <input  type='email' name='email' onChange={handleChange}/>
+        <input  type='text' name='lastName' onChange={handleChange}/><br/><br/>
+
+        <label className='form-text'>
+          Email:
         </label><br/>
-        <label>
-          Password:<br/>
-          <input  type='password' name='password' onChange={handleChange}/>
+        <input  type='email' name='email' onChange={handleChange}/><br/><br/>
+
+        <label className='form-text'>
+          Password:
         </label><br/>
-        <label>
-          Age:<br/>
-          <input  type='text' name='age' onChange={handleChange}/>
+        <input  type='password' name='password' onChange={handleChange}/><br/><br/>
+
+        <label className='form-text'>
+          Age:
         </label><br/>
+        <input  type='text' name='age' onChange={handleChange}/><br/><br/>
+
         <input className='submitBtn' type='submit' value='Submit' onClick={closeModal}/>
+
+        <p className='signUp-text' onClick={() => alert('Register clicked')}>Register</p>
       </form>
     </div>
   )

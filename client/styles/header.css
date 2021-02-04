@@ -9,4 +9,13 @@ header {
   padding: 10px;
   /* border: 1px solid blue; */
   background-color: rgb(235, 235, 235);
+  /* font-family: "Bebas Neue", cursive; */
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  /* font-family: "Bebas Neue", cursive; */
 }

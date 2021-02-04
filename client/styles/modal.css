@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   padding: 10px;
   background: rgb(187, 187, 187);
   width: 50%;
@@ -12,9 +13,8 @@
   border: 3px solid rgb(252, 193, 203);
   box-shadow: -5px 5px 5px rgb(167, 167, 167);
 }
-.submitBtn {
-  color: red;
-}
-label {
-  padding-left: 25%;
+
+.form-text {
+  justify-content: center;
+  text-align: center;
 }
