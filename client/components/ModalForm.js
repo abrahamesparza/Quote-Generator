@@ -60,7 +60,7 @@ const ModalForm = ({ show, closeModal }) => {
         </label><br/>
         <input  type='text' name='age' onChange={handleChange}/><br/><br/>
 
-        <input className='submitBtn' type='submit' value='Submit' onClick={closeModal}/>
+        <input className='submitBtn' type='submit' value='Log In' onClick={closeModal}/>
 
         <p className='signUp-text' onClick={() => alert('Register clicked')}>Register</p>
       </form>

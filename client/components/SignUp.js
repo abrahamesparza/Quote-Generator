@@ -11,22 +11,24 @@ const SignUp = () => {
       <label>
       Last Name:
       </label>
-      <input type='text' name='firstName' />
+      <input type='text' name='lastName' />
 
       <label>
       Email:
       </label>
-      <input type='email' name='firstName' />
+      <input type='email' name='email' />
 
       <label>
       Password:
       </label>
-      <input type='password' name='firstName' />
+      <input type='password' name='password' />
 
       <label>
       Confirm Password:
       </label>
-      <input type='password' name='firstName' />
+      <input type='password' name='confirmPassword' />
+
+      <input type='submit' value='Sign Up' />
     </form>
   )
 }
