@@ -11,14 +11,14 @@ const Header = ( { showModal } ) => {
   return (
     <Router>
       <header>
-        <Link to='/'>
+        <Link className='link' to='/'>
           <div>Home</div>
         </Link>
-        <Link to='/about'>
+        <Link className='link' to='/about'>
           <div>About</div>
         </Link>
-        <Link to='/join'>
-          <div onClick={showModal}>Join</div>
+        <Link className='link' to='/login'>
+          <div onClick={showModal}>Log In</div>
         </Link>
       </header>
     </Router>
