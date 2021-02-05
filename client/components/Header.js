@@ -17,8 +17,8 @@ const Header = ( { showModal } ) => {
         <Link className='link' to='/about'>
           <div>About</div>
         </Link>
-        <Link className='link' to='/login'>
-          <div onClick={showModal}>Log In</div>
+        <Link className='link' to='/signup'>
+          <div onClick={showModal}>Sign Up</div>
         </Link>
       </header>
     </Router>

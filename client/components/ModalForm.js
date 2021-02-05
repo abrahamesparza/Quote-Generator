@@ -31,7 +31,6 @@ const ModalForm = ({ show, closeModal }) => {
     .then(res => console.log(res))
     .catch(err => console.error(err))
   }
-  console.log('user:', user);
   return (
     <div className='form-container'>
       <form className='form-space' onSubmit={onSubmit}>
@@ -60,9 +59,11 @@ const ModalForm = ({ show, closeModal }) => {
         </label><br/>
         <input  type='text' name='age' onChange={handleChange}/><br/><br/>
 
-        <input className='submitBtn' type='submit' value='Log In' onClick={closeModal}/>
+        <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal}/>
 
-        <p className='signUp-text' onClick={() => alert('Register clicked')}>Register</p>
+        <p className='signUp-text'>Already a member?<br/>
+          <input type='submit' className='loginBtn' value='Log In' onClick={() => alert('Register clicked')}/>
+        </p>
       </form>
     </div>
   )

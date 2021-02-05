@@ -1,18 +1,8 @@
 import React from 'react';
 
-const SignUp = () => {
+const LogIn = () => {
   return (
-    <form className='signupForm'>
-      <label>
-        First Name:
-      </label>
-      <input type='text' name='firstName' />
-
-      <label>
-      Last Name:
-      </label>
-      <input type='text' name='lastName' />
-
+    <form className='loginForm'>
       <label>
       Email:
       </label>
@@ -23,12 +13,9 @@ const SignUp = () => {
       </label>
       <input type='password' name='password' />
 
-      <label>
-      Confirm Password:
-      </label>
-      <input type='password' name='confirmPassword' />
-
-      <input type='submit' value='Sign Up' />
+      <input type='submit' value='Log In' />
     </form>
   )
 }
+
+export default LogIn;
