@@ -7,15 +7,16 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Header = ( { showModal } ) => {
+const Header = ( { showModal, closeModal } ) => {
   return (
     <Router>
       <header>
         <Link className='link' to='/'>
-          <div>Home</div>
+          <div onClick={() => closeModal()}>Home</div>
         </Link>
         <Link className='link' to='/about'>
-          <div>About</div>
+        {/* add a page state, on click change state to about */}
+          <div onClick={() => closeModal()}>About</div>
         </Link>
         <Link className='link' to='/signup'>
           <div onClick={showModal}>Sign Up</div>

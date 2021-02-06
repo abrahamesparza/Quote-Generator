@@ -1,12 +1,12 @@
 import React from 'react';
-import ModalForm from './ModalForm.js';
+import Page from './Page.js';
 import '../styles/main.css';
 
-const Main = ({ show, closeModal }) => {
+const Main = ({ show, closeModal, pageChange, page }) => {
   return (
     <main>
       <div className='modalPopup'>
-        <ModalForm show={show} closeModal={closeModal}/>
+        <Page show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
       </div>
     </main>
   )
