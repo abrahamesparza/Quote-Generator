@@ -13,17 +13,15 @@ const LogIn = ({ show, pageChange, closeModal}) => {
         <label className='form-text'>
         Email:
         </label><br/>
-        <input type='email' name='email' /><br/>
+        <input type='email' name='email' /><br/><br/>
 
         <label className='form-text'>
         Password:
         </label><br/>
-        <input type='password' name='password' /><br/>
+        <input type='password' name='password' /><br/><br/>
 
         <input className='loginBtn' type='submit' value='Log In' onClick={closeModal}/><br/>
-        <p className='signUp-text'>Not a member?<br/>
-            <input type='submit' className='signUpBtn' value='Sign Up' onClick={pageChange}/>
-          </p>
+        <p className='newMemberLink' onClick={pageChange}>Not a member?</p>
       </form>
     </div>
   )

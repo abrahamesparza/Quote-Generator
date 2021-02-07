@@ -10,6 +10,7 @@ const App = () => {
   let [page, setPage] = useState('signup');
 
   let showModal = () => {
+    setPage('signup');
     if (show === false) {
       setShow(true)
     } else {
@@ -23,6 +24,7 @@ const App = () => {
         setShow(false)
       }
     }, 100)
+    setPage('home')
   };
 
   let pageChange = (e) => {
@@ -34,19 +36,22 @@ const App = () => {
     }
   };
 
-  // let handlePageChange = () => {
-  //   if (page === 'signup') {
-  //     return <ModalForm show={show} closeModal={closeModal} pageChange={pageChange}/>
-  //   } else if (page === 'login') {
-  //     return <LogIn handlePageChange={handlePageChange}/>
-  //   }
+  // let redirectHome = () => {
+  //   setPage('home');
+  //   return window.location.assign('/');
   // }
+
+  // let urlChange = () => {
+  //   redirectHome();
+  // };
+
+  console.log('page', page);
 
   return (
     <div className='container'>
       <Header showModal={showModal} closeModal={closeModal}/>
       <Aside />
-      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page}/>
+      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} /*urlChange={urlChange} */ />
       <Footer />
     </div>
   )
