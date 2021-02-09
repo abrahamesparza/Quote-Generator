@@ -1,20 +1,10 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import Reactfrom 'react';
 
-const Profile = ({ user }) => {
-
-  // useEffect(() => {
-  //   axios.get('/user/:id')
-  //   .then(res => {res.json()})
-  //   .then(data => {
-  //     setName(data);
-  //     console.log('data:', data);
-  //   })
-  //   .catch(err => console.error(err))
-  // });
-
+const Profile = () => {
+// i want to greet the user with their name and profile info in this component
   return (
-    <h1>Welcome, {user.firstName} {user.lastName}</h1>
+    <h1>Welcome!!!</h1>
   )
 }
 export default Profile;
