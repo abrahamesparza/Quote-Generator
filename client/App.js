@@ -7,14 +7,15 @@ import Footer from './components/Footer';
 
 const App = () => {
   let [show, setShow] = useState(false);
-  let [page, setPage] = useState('signup');
+  let [page, setPage] = useState('home');
 
   let showModal = () => {
-    setPage('signup');
     if (show === false) {
       setShow(true)
+      setPage('signup');
     } else {
       setShow(false);
+      setPage('home');
     }
   };
 
@@ -24,7 +25,6 @@ const App = () => {
         setShow(false)
       }
     }, 100)
-    setPage('home')
   };
 
   let pageChange = (e) => {
@@ -36,22 +36,13 @@ const App = () => {
     }
   };
 
-  // let redirectHome = () => {
-  //   setPage('home');
-  //   return window.location.assign('/');
-  // }
-
-  // let urlChange = () => {
-  //   redirectHome();
-  // };
-
   console.log('page', page);
 
   return (
     <div className='container'>
       <Header showModal={showModal} closeModal={closeModal}/>
       <Aside />
-      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} /*urlChange={urlChange} */ />
+      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
       <Footer />
     </div>
   )
