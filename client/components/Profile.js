@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Reactfrom 'react';
+import React from 'react';
 
 const Profile = () => {
 // i want to greet the user with their name and profile info in this component
