@@ -18,7 +18,6 @@ const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
     lastName: '',
     email: '',
     password: '',
-    age: ''
   });
 
   let handleChange = (e) => {
@@ -62,11 +61,6 @@ const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
             Password:
           </label><br/>
           <input  type='password' name='password' onChange={handleChange}/><br/><br/>
-
-          <label className='form-text'>
-            Age:
-          </label><br/>
-          <input  type='text' name='age' onChange={handleChange}/><br/><br/>
 
           <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal} /* onClick={urlChange}*/ />
 
