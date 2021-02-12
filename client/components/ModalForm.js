@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 
-const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
+const ModalForm = ({ show, closeModal, pageChange, setProfile }) => {
   if (!show) {
     return null;
   }
@@ -35,6 +35,7 @@ const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
     axios.post('/new/user', data)
     .then(res => console.log(res))
     .catch(err => console.error(err))
+    // invoke function to handle some get
   }
   console.log('Sign up page')
   return (
@@ -61,13 +62,14 @@ const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
             Password:
           </label><br/>
           <input  type='password' name='password' onChange={handleChange}/><br/><br/>
-
-          <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal} /* onClick={urlChange}*/ />
+          <Link to='/profile'>
+            <input type='submit' className='submitBtn' value='Sign Up' onClick={setProfile} /* onClick={urlChange}*/ />
+          </Link>
 
           {/* want to redirect url to /login upon click of form change, but not working atm */}
-          {/* <Link className='link' to='/login'> */}
-          <p className='loginText' onClick={pageChange}>Already a member?</p>
-          {/* </Link>  */}
+          <Link to='/login' className='link'>
+            <p className='loginText' onClick={pageChange}>Already a member?</p>
+          </Link>
 
         </form>
       </div>

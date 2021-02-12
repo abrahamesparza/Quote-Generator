@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import '../styles/modal.css';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch
+} from 'react-router-dom';
 
-
-const LogIn = ({ show, pageChange, closeModal}) => {
+const LogIn = ({ show, formChange, closeModal}) => {
   if (!show) {
     return null;
   }
@@ -29,23 +34,26 @@ const LogIn = ({ show, pageChange, closeModal}) => {
   }
 
   return (
-    <div className='form-container'>
-    <h1>Log In</h1>
-      <form className='loginForm' onSubmit={onSubmit}>
-        <label className='form-text'>
-        Email:
-        </label><br/>
-        <input type='email' name='email' onChange={handleChange}/><br/><br/>
+    <Router>
+      <div className='form-container'>
+      <h1>Log In</h1>
+        <form className='loginForm' onSubmit={onSubmit}>
+          <label className='form-text'>
+          Email:
+          </label><br/>
+          <input type='email' name='email' onChange={handleChange}/><br/><br/>
 
-        <label className='form-text'>
-        Password:
-        </label><br/>
-        <input type='password' name='password' onChange={handleChange}/><br/><br/>
-
-        <input className='loginBtn' type='submit' value='Log In' onClick={closeModal}/><br/>
-        <p className='newMemberLink' onClick={pageChange}>Not a member?</p>
-      </form>
-    </div>
+          <label className='form-text'>
+          Password:
+          </label><br/>
+          <input type='password' name='password' onChange={handleChange}/><br/><br/>
+          <Link to='/profile'>
+            <input className='loginBtn' type='submit' value='Log In' onClick={setProfile}/><br/>
+          </Link>
+          <p className='newMemberLink' onClick={formChange}>Not a member?</p>
+        </form>
+      </div>
+    </Router>
   )
 }
 

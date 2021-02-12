@@ -27,7 +27,7 @@ const App = () => {
     }, 100)
   };
 
-  let pageChange = (e) => {
+  let formChange = (e) => {
     e.preventDefault();
     if (page === 'signup') {
       setPage('login');
@@ -36,13 +36,22 @@ const App = () => {
     }
   };
 
+  let setProfile = () => {
+    setTimeout(() => {
+      if (show === true) {
+        setShow(false)
+      }
+    }, 100);
+    setPage('profile');
+  }
+
   console.log('page', page);
 
   return (
     <div className='container'>
       <Header showModal={showModal} closeModal={closeModal}/>
       <Aside />
-      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
+      <Main show={show} closeModal={closeModal} formChange={formChange} page={page} setProfile={setProfile}/>
       <Footer />
     </div>
   )
