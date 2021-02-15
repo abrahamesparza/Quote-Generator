@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div className='container'>
-      <Header showModal={showModal} closeModal={closeModal}/>
+      <Header showModal={showModal} closeModal={closeModal} page={page}/>
       <Aside />
       <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
       <Footer />
