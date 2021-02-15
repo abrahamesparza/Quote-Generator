@@ -32,6 +32,17 @@ const Home = () => {
     genQuote();
   }
 
+  let favoriteQuote = () => {
+    let data = {
+      text: quote.text,
+      author: quote.author,
+      favorite: true
+    }
+    axios.post('/favorite/quote', data)
+    .then(res => console.log('quote res:', res))
+    .catch(err => console.error(err));
+  }
+
   return (
     <div className='home'>
       <h1 className='quoteText'>{quote.text}</h1>
@@ -39,7 +50,7 @@ const Home = () => {
       <div className='buttonBar'>
         <ThumbDownIcon className='thumbDown' onClick={() => alert('thumb down')} />
         <button className='nextQuote' onClick={genNewQuote}>Next</button>
-        <ThumbUpIcon  className='thumbUp' onClick={() => alert('thumb up')} />
+        <ThumbUpIcon  className='thumbUp' onClick={favoriteQuote} />
       </div>
 
     </div>
