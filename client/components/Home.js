@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../styles/home.css';
-
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 const Home = () => {
   let [quote, setQuote] = useState({
@@ -35,7 +36,12 @@ const Home = () => {
     <div className='home'>
       <h1 className='quoteText'>{quote.text}</h1>
       <h2 className='quoteAuthor'>{quote.author}</h2>
-      <button className='nextQuote' onClick={genNewQuote}>Next</button>
+      <div className='buttonBar'>
+        <ThumbDownIcon className='thumbDown' onClick={() => alert('thumb down')} />
+        <button className='nextQuote' onClick={genNewQuote}>Next</button>
+        <ThumbUpIcon  className='thumbUp' onClick={() => alert('thumb up')} />
+      </div>
+
     </div>
   )
 };
