@@ -6,10 +6,22 @@ aside {
 }
 h2 {
   text-align: center;
+  margin-top: 5%;
 }
 .asideBody {
+  margin-top: -10%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-left: 0%;
+}
+ul,
+li {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 5%;
+}
+li {
+  padding-top: 5%;
 }
