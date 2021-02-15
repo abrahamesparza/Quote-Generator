@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/header.css';
 import {
   BrowserRouter as Router,
@@ -8,11 +8,18 @@ import {
 } from 'react-router-dom';
 
 const Header = ( { showModal, closeModal } ) => {
+  let [page, setPage] = useState('');
+  let setHome = () => {
+    closeModal();
+    setPage('home');
+    alert('click')
+
+  }
   return (
     <Router>
       <header>
-        <Link className='link' to='/'>
-          <div onClick={() => closeModal()}>Home</div>
+        <Link className='link' to='/' >
+          <div onClick={setHome}>Home</div>
         </Link>
         <Link className='link' to='/about'>
         {/* add a page state, on click change state to about */}
