@@ -1,0 +1,14 @@
+.quoteText,
+.quoteAuthor {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Teko", sans-serif;
+}
+.nextQuote {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "Teko", sans-serif;
+  width: 50px;
+}

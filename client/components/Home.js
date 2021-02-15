@@ -1,9 +1,41 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import '../styles/home.css';
+
 
 const Home = () => {
+  let [quote, setQuote] = useState({
+    text: '',
+    author: ''
+  });
+
+  useEffect(() => {
+    genQuote();
+  }, []);
+
+  let genQuote = () => {
+    axios.get('https://type.fit/api/quotes')
+    .then(res => {
+      let data = res.data;
+        let random = Math.floor(Math.random() * data.length);
+        let assigned = data[random];
+        setQuote({
+          text: assigned.text,
+          author: assigned.author
+        });
+    })
+    .catch(err => console.error(err))
+  }
+
+  let genNewQuote = () => {
+    genQuote();
+  }
+
   return (
     <div className='home'>
-      <h1>Welcome, New User.</h1>
+      <h1 className='quoteText'>{quote.text}</h1>
+      <h2 className='quoteAuthor'>{quote.author}</h2>
+      <button className='nextQuote' onClick={genNewQuote}>Next</button>
     </div>
   )
 };
