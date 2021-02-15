@@ -9,11 +9,11 @@ import {
 
 const Header = ( { showModal, closeModal } ) => {
   let [page, setPage] = useState('');
+
   let setHome = () => {
     closeModal();
     setPage('home');
-    alert('click')
-
+    // try return <Home />
   }
   return (
     <Router>

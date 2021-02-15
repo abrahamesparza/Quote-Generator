@@ -12,25 +12,18 @@ const Aside = () => {
   let getFavorites = () => {
     axios.get('/favorites')
     .then(res => {
-      console.log('GET res:', res)
       setFavorites(res.data);
     })
     .catch(err => console.error(err))
   }
-  console.log('favorite quotes', favorites);
 
   return (
     <aside>
     <h2>Favorite Quotes</h2>
     <div className='asideBody'>
-      {/* dummy data for visual */}
       <ul>
         {favorites.map(quote => {
-          {/* need to consider string length so quote doesnt overlap side bar */}
-          if (quote.text.length > 20) {
-            let fav = quote.text.slice(0, 50);
-            return <li>{fav}</li>
-          }
+          return <li>{quote.text}</li>
         })}
       </ul>
     </div>
