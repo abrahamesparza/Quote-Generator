@@ -11,6 +11,7 @@ const port = process.env.PORT || 3003;
 const db = require('../database/db.js')
 const { Users } = require('../database/signupSchema.js');
 const { NewUser } = require('../database/loginSchema.js');
+const { Quotes } = require('../database/quoteSchema.js');
 
 
 const app = express();
@@ -21,6 +22,8 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.status(200).send('HELLO ABRAHAM');
 });
+
+/* USER ROUTES */
 
 app.get('/users', (req, res) => {
   Users.find((err, data) => {
@@ -59,6 +62,26 @@ app.post('/login/user', (req, res) => {
       })
     }
   })
+});
+
+/* USER ROUTES */
+
+/* QUOTE ROUTES */
+
+app.post('/favorite/quote', (req, res) => {
+  let quoteData = req.body;
+  console.log('quoteData:', quoteData);
+  Quotes.create(quoteData, (err, data) => {
+    if (err) res.status(400).send('Error');
+    else res.status(201).send(data);
+  });
+});
+
+app.get('/favorites', (req, res) => {
+  Quotes.find( {favorite: true} , (err, data) => {
+    if (err) res.status(500).send('Error');
+    else res.status(200).send(data);
+  });
 });
 
 app.listen(port, () => {
