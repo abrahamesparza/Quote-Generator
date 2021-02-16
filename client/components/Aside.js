@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/aside.css'
 import axios from 'axios';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 const Aside = () => {
   let [favorites, setFavorites] = useState([]);
@@ -17,13 +18,26 @@ const Aside = () => {
     .catch(err => console.error(err))
   }
 
+  let removeQuote = (e) => {
+    console.log('data',e.target.value)
+    axios.delete('/remove/quote')
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+  };
+
   return (
     <aside>
     <h2>Favorite Quotes</h2>
     <div className='asideBody'>
       <ul>
         {favorites.map(quote => {
-          return <li>{quote.text}</li>
+          {/* use this to slice quote when length is too long - need to create a quoteModal to popup in the sidebar when a quote is clicked on */}
+          {/* if (quote.text.length >= 30) {
+            let text = quote.text.slice(0, 30).concat('...') */}
+            {/* return <li>{text}&nbsp;<RemoveIcon fontSize='small' onClick={removeQuote} /></li> */}
+          {/* } */}
+
+          return <li key={quote._id} onClick={removeQuote}>{quote.text}&nbsp;<RemoveIcon fontSize='small' /></li>
         })}
       </ul>
     </div>

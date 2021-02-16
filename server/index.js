@@ -84,6 +84,14 @@ app.get('/favorites', (req, res) => {
   });
 });
 
+app.delete('/remove/quote', (req, res) => {
+  console.log('req body', req.body);
+  // Quotes.deleteOne({})
+})
+
+/* QUOTE ROUTES */
+
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
