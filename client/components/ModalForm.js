@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 
-const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
+const ModalForm = ({ show, closeModal, pageChange }) => {
   if (!show) {
     return null;
   }
@@ -62,7 +62,7 @@ const ModalForm = ({ show, closeModal, pageChange, urlChange }) => {
           </label><br/>
           <input  type='password' name='password' onChange={handleChange}/><br/><br/>
 
-          <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal} /* onClick={urlChange}*/ />
+          <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal} />
 
           {/* want to redirect url to /login upon click of form change, but not working atm */}
           {/* <Link className='link' to='/login'> */}

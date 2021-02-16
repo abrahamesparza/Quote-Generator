@@ -36,8 +36,6 @@ const App = () => {
     }
   };
 
-  console.log('page', page);
-
   return (
     <div className='container'>
       <Header showModal={showModal} closeModal={closeModal} page={page}/>
