@@ -85,8 +85,12 @@ app.get('/favorites', (req, res) => {
 });
 
 app.delete('/remove/quote', (req, res) => {
-  console.log('req body', req.body);
-  // Quotes.deleteOne({})
+  let id = req.body;
+  console.log('req body', id);
+  Quotes.deleteOne({ _id: id}, (err, data) => {
+    if (err) res.status(500).send(err);
+    else res.status(200).send(data);
+  })
 })
 
 /* QUOTE ROUTES */

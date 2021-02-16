@@ -18,10 +18,16 @@ const Aside = () => {
     .catch(err => console.error(err))
   }
 
-  let removeQuote = (e) => {
-    console.log('data',e.target.value)
-    axios.delete('/remove/quote')
-    .then(res => console.log(res))
+  let removeQuote = (id) => {
+    let set = [...favorites];
+    let index = set.indexOf(id);
+    axios.delete('/remove/quote', { data: { _id: id } })
+    .then(res => {
+      if (index !== -1) {
+        set.splice(index, 1);
+        setFavorites(set);
+      }
+    })
     .catch(err => console.error(err));
   };
 
@@ -37,7 +43,7 @@ const Aside = () => {
             {/* return <li>{text}&nbsp;<RemoveIcon fontSize='small' onClick={removeQuote} /></li> */}
           {/* } */}
 
-          return <li key={quote._id} onClick={removeQuote}>{quote.text}&nbsp;<RemoveIcon fontSize='small' /></li>
+          return <li key={quote._id} onClick={() => removeQuote(quote._id)}>{quote.text}&nbsp;<RemoveIcon fontSize='small' /></li>
         })}
       </ul>
     </div>
