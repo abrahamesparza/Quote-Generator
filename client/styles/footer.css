@@ -1,6 +1,10 @@
 footer {
   grid-column: 1 / 3;
   grid-row: 3 / 4;
-  /* background: yellow; */
-  border: 1px solid yellow;
+  border: 1px solid ghostwhite;
+  text-align: center;
+  font-family: "Bebas Neue", cursive;
+  justify-content: center;
+  padding-top: 28px;
+  font-size: 28px;
 }

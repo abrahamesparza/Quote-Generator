@@ -43,7 +43,7 @@ const Aside = () => {
             {/* return <li>{text}&nbsp;<RemoveIcon fontSize='small' onClick={removeQuote} /></li> */}
           {/* } */}
 
-          return <li key={quote._id} onClick={() => removeQuote(quote._id)}>{quote.text}&nbsp;<RemoveIcon fontSize='small' /></li>
+          return <li key={quote._id} onClick={() => removeQuote(quote._id)}>{quote.text}&nbsp;<RemoveIcon className='removeIcon' fontSize='small' /></li>
         })}
       </ul>
     </div>

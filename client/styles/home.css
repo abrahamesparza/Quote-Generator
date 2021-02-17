@@ -12,8 +12,8 @@
   font-size: 18px;
 }
 
-.thumbUp {
-  padding-left: 5%;
+.thumbUp,
+.thumbDown {
   color: rgb(173, 173, 173);
 }
 

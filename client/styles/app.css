@@ -1,6 +1,11 @@
 body {
   margin: 0;
   font-family: "Bebas Neue", cursive;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(167, 237, 255),
+    rgb(214, 153, 255)
+  );
 }
 /* css grid - two dimensional design - for layout & flexbox - one dimesnional design for alignment BOTH are very powerful together */
 .container {

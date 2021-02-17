@@ -41,6 +41,7 @@ const Home = () => {
     axios.post('/favorite/quote', data)
     .then(res => console.log('quote res:', res))
     .catch(err => console.error(err));
+    genNewQuote();
   }
 
   return (
@@ -48,9 +49,8 @@ const Home = () => {
       <h1 className='quoteText'>{quote.text}</h1>
       <h2 className='quoteAuthor'>{quote.author}</h2>
       <div className='buttonBar'>
-        <ThumbDownIcon className='thumbDown' onClick={() => alert('thumb down')} />
-        <button className='nextQuote' onClick={genNewQuote}>Next</button>
-        <ThumbUpIcon  className='thumbUp' onClick={favoriteQuote} />
+        <ThumbDownIcon className='thumbDown' fontSize='large' onClick={genNewQuote} />
+        <ThumbUpIcon  className='thumbUp' fontSize='large' onClick={favoriteQuote} />
       </div>
 
     </div>

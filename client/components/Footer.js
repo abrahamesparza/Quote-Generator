@@ -4,7 +4,7 @@ import '../styles/footer.css'
 const Footer = () => {
   return (
     <footer>
-      Footer doe
+      Created by Abraham Esparza
     </footer>
   )
 };
