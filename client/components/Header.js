@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../styles/header.css';
+import About from './About.js';
+import Home from './Home.js';
+
 import {
   BrowserRouter as Router,
   Link,
@@ -7,23 +10,16 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Header = ( { showModal, closeModal } ) => {
-  let [page, setPage] = useState('');
-
-  let setHome = () => {
-    closeModal();
-    setPage('home');
-    // try return <Home />
-  }
+const Header = ( { showModal, closeModal, switchView } ) => {
   return (
     <Router>
       <header>
         <Link className='link' to='/' >
-          <div onClick={setHome}>Home</div>
+          <div onClick={() => switchView('home')}>Home</div>
         </Link>
         <Link className='link' to='/about'>
         {/* add a page state, on click change state to about */}
-          <div onClick={() => closeModal()}>About</div>
+          <div onClick={() => switchView('about')}>About</div>
         </Link>
         <Link className='link' to='/signup'>
           <div onClick={showModal}>Sign Up</div>

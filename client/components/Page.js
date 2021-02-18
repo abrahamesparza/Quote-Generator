@@ -1,7 +1,8 @@
 import React from 'react';
 import ModalForm from './ModalForm.js';
 import LogIn from './LogIn.js';
-import Home from './Home.js'
+import Home from './Home.js';
+import About from './About.js';
 
 const Page = ({ show, closeModal, pageChange, page }) => {
   if (page === 'signup') {
@@ -10,6 +11,8 @@ const Page = ({ show, closeModal, pageChange, page }) => {
     return <LogIn show={show} pageChange={pageChange} closeModal={closeModal}/>
   } else if (page === 'home') {
     return <Home />
+  } else if (page === 'about') {
+    return <About />
   }
 };
 

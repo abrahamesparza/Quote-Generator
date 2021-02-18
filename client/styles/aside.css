@@ -3,6 +3,7 @@ aside {
   grid-row: 2 / 3;
   /* background: green; */
   border: 1px solid ghostwhite;
+  overflow-y: scroll;
 }
 h2 {
   text-align: center;
@@ -26,4 +27,8 @@ li {
   justify-content: space-evenly;
   margin-right: 5%;
   margin-left: -5%;
+}
+.removeIcon:hover {
+  color: rgb(255, 151, 151);
+  transform: scale(1.5);
 }

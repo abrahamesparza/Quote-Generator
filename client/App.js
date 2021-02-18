@@ -36,9 +36,13 @@ const App = () => {
     }
   };
 
+  let switchView = (target) => {
+    setPage(target);
+  };
+
   return (
     <div className='container'>
-      <Header showModal={showModal} closeModal={closeModal} page={page}/>
+      <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} />
       <Aside />
       <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
       <Footer />
