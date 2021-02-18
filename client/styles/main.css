@@ -3,4 +3,5 @@ main {
   grid-column: 2 / 3;
   /* background: pink; */
   border: 1px solid ghostwhite;
+  overflow-y: scroll;
 }

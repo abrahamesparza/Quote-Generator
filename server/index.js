@@ -41,7 +41,7 @@ app.post('/new/user', (req, res) => {
     Users.create(userData, (err, data) => {
       console.log('created user:', data);
       if (err) res.status(500).send(err);
-      else res.status(201).send(data);
+      else res.status(201).redirect('/');
     });
   });
 });

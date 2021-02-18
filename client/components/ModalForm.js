@@ -33,7 +33,10 @@ const ModalForm = ({ show, closeModal, pageChange }) => {
     let data = user;
     setUser({[e.target.name]: e.target.value});
     axios.post('/new/user', data)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log('res:', res)
+      window.location.href = '/'
+    })
     .catch(err => console.error(err))
   }
   console.log('Sign up page')
