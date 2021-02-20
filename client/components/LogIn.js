@@ -24,7 +24,10 @@ const LogIn = ({ show, pageChange, closeModal}) => {
     e.preventDefault();
     let data = login;
     axios.post('/login/user', data)
-    .then(res => console.log('res:', res))
+    .then(res => {
+      window.location.href = '/';
+      console.log('res:', res);
+    })
     .catch(err => alert('Password failed. Try again.'))
   }
 

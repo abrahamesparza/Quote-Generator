@@ -32,9 +32,9 @@ const ModalForm = ({ show, closeModal, pageChange }) => {
     e.preventDefault()
     let data = user;
     setUser({[e.target.name]: e.target.value});
-    axios.post('/new/user', data)
+    axios.post('/new/user', data, { withCredentials: true })
     .then(res => {
-      console.log('res:', res)
+      console.log('res:`', res)
       window.location.href = '/'
     })
     .catch(err => console.error(err))

@@ -17,3 +17,9 @@
   font-family: "Bebas Neue", cursive;
   margin-top: -3%;
 }
+h2.loremIpsum {
+  color: rgb(235, 235, 235);
+}
+p.loremIpsum {
+  color: rgb(235, 235, 235);
+}
