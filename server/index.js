@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
@@ -15,13 +16,23 @@ const { Quotes } = require('../database/quoteSchema.js');
 
 
 const app = express();
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join('public')));
-app.use(cors());
+app.use(cors({credentials:true, origin: 'localhost:3003'}));
 
 app.get('/', (req, res) => {
+  console.log('Cookie in get /: ', req.cookies)
   res.status(200).send('HELLO ABRAHAM');
 });
+
+/* cookie test route */
+app.get('/cookies', (req, res) => {
+  console.log('/cookies route', req.cookies);
+  if (!req.cookies.token) res.status(401).send('error')
+  else res.status(200).json({ secret: 'hello mello jello'})
+})
+/* cookie test route */
 
 /* USER ROUTES */
 
@@ -35,13 +46,14 @@ app.get('/users', (req, res) => {
 
 app.post('/new/user', (req, res) => {
   let userData = req.body;
+  console.log('Cookie', req.cookies);
   bcrypt.hash(userData.password, saltRounds, (err, hash) => {
     userData.password = hash;
     if (err) console.log('Error hashing', err);
     Users.create(userData, (err, data) => {
       console.log('created user:', data);
       if (err) res.status(500).send(err);
-      else res.status(201).redirect('/');
+      else res.status(200).send(data);
     });
   });
 });
