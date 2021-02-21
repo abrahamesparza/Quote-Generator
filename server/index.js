@@ -35,16 +35,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join('public')));
 app.use(cors({credentials:true, origin: 'localhost:3003'}));
 
+/* establishes session on app render */
 app.get('/session', (req, res) => {
   req.session.isAuth = true;
-  console.log('session', req.session);
-  console.log(req.session.id);
-  res.render('index');
+  res.status(200).send('Success')
 })
 
 app.get('/', (req, res) => {
-  req.session.isAuth = true;
-  console.log(req.session);
   res.status(200).send('HELLO ABRAHAM');
 });
 

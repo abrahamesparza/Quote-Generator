@@ -4,10 +4,21 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Aside from './components/Aside';
 import Footer from './components/Footer';
+import axios from 'axios';
 
 const App = () => {
   let [show, setShow] = useState(false);
   let [page, setPage] = useState('home');
+
+  useEffect(() => {
+    getSession();
+  }, []);
+
+  let getSession = () => {
+    axios.get('/session')
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
+  }
 
   let showModal = () => {
     if (show === false) {
