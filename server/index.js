@@ -1,8 +1,17 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
+const connectionUrl= require('../database/url.js').connectionUrl;
+
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoSession = require ('connect-mongodb-session')(session);
+
+const store = new MongoSession({
+  uri: connectionUrl,
+  collection: 'sessions'
+})
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -11,18 +20,30 @@ const port = process.env.PORT || 3003;
 
 const db = require('../database/db.js')
 const { Users } = require('../database/signupSchema.js');
-const { NewUser } = require('../database/loginSchema.js');
+const { Logins } = require('../database/loginSchema.js');
 const { Quotes } = require('../database/quoteSchema.js');
 
 
 const app = express();
 app.use(cookieParser());
+app.use(session({
+  secret: 'key to sign cookie',
+  resave: false,
+  saveUninitialized: false,
+  store: store
+}));
 app.use(bodyParser.json());
 app.use(express.static(path.join('public')));
 app.use(cors({credentials:true, origin: 'localhost:3003'}));
 
+app.get('/session', (req, res) => {
+  req.session.isAuth = true;
+  console.log('session', req.session);
+  console.log(req.session.id);
+  res.status(200).send('Session tutorial');
+})
+
 app.get('/', (req, res) => {
-  console.log('Cookie in get /: ', req.cookies)
   res.status(200).send('HELLO ABRAHAM');
 });
 
