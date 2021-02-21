@@ -8,8 +8,8 @@ const loginSchema = new Schema({
   password: String,
 });
 
-const NewUser = mongoose.model('NewUser', loginSchema);
+const Logins = mongoose.model('Logins', loginSchema);
 
 module.exports = {
-  NewUser
+  Logins
 };
