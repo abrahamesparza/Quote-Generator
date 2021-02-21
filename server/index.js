@@ -7,7 +7,6 @@ const connectionUrl= require('../database/url.js').connectionUrl;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoSession = require ('connect-mongodb-session')(session);
-
 const store = new MongoSession({
   uri: connectionUrl,
   collection: 'sessions'
@@ -40,10 +39,12 @@ app.get('/session', (req, res) => {
   req.session.isAuth = true;
   console.log('session', req.session);
   console.log(req.session.id);
-  res.status(200).send('Session tutorial');
+  res.render('index');
 })
 
 app.get('/', (req, res) => {
+  req.session.isAuth = true;
+  console.log(req.session);
   res.status(200).send('HELLO ABRAHAM');
 });
 
@@ -65,18 +66,22 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.post('/new/user', (req, res) => {
+app.post('/new/user', async (req, res) => {
   let userData = req.body;
-  console.log('Cookie', req.cookies);
-  bcrypt.hash(userData.password, saltRounds, (err, hash) => {
-    userData.password = hash;
-    if (err) console.log('Error hashing', err);
-    Users.create(userData, (err, data) => {
-      console.log('created user:', data);
-      if (err) res.status(500).send(err);
-      else res.status(200).send(data);
+  let user = await Users.findOne({email:userData.email})
+  if (user) {
+    res.status(401).send('Account exists with email');
+  } else {
+    bcrypt.hash(userData.password, saltRounds, (err, hash) => {
+      userData.password = hash;
+      if (err) console.log('Error hashing', err);
+      Users.create(userData, (err, data) => {
+        console.log('created user:', data);
+        if (err) res.status(500).send(err);
+        else res.status(200).send(data);
+      });
     });
-  });
+  }
 });
 
 app.post('/login/user', (req, res) => {
