@@ -7,6 +7,6 @@ const sessionSchema = new Schema({
 
 const Sessions = mongoose.model('Sessions', sessionSchema);
 
-module.exports {
+module.exports = {
   Sessions
 }

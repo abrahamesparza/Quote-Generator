@@ -4,9 +4,18 @@ const path = require('path');
 const cors = require('cors');
 const connectionUrl= require('../database/url.js').connectionUrl;
 
+const port = process.env.PORT || 3003;
+
+const db = require('../database/db.js')
+const { Users } = require('../database/signupSchema.js');
+const { Logins } = require('../database/loginSchema.js');
+const { Quotes } = require('../database/quoteSchema.js');
+const { Sessions } = require('../database/sessionSchema.js');
+
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoSession = require ('connect-mongodb-session')(session);
+
 const store = new MongoSession({
   uri: connectionUrl,
   collection: 'sessions'
@@ -15,12 +24,6 @@ const store = new MongoSession({
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-const port = process.env.PORT || 3003;
-
-const db = require('../database/db.js')
-const { Users } = require('../database/signupSchema.js');
-const { Logins } = require('../database/loginSchema.js');
-const { Quotes } = require('../database/quoteSchema.js');
 
 
 const app = express();
@@ -38,7 +41,24 @@ app.use(cors({credentials:true, origin: 'localhost:3003'}));
 /* establishes session on app render */
 app.get('/session', (req, res) => {
   req.session.isAuth = true;
-  res.status(200).send('Success')
+  // let sessionId = req.session.id; //consoles session id
+  console.log('sessionId:', sessionId);
+  // want to create session with session schema using this
+  // need to create a POST route to put the create in
+  // add function to App.js with post route
+  // invoke in useEffect after getSession - call it 'postSession'
+  Sessions.create(sessionId, (err, data) => {
+    // console.log('data', data) //consoles nothing
+    if (err) res.status(400).send('Error storing session');
+    else res.status(200).send(data);
+  });
+});
+
+app.get('/existing/sessions', (req, res) => {
+  Sessions.find((err, data) => {
+    if (err) res.status(400).send(err);
+    else res.status(200).send(data);
+  })
 })
 
 app.get('/', (req, res) => {
