@@ -3,12 +3,18 @@ import React, { useEffect, useState } from 'react';
 import '../styles/home.css';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import Landing from './Landing';
 
-const Home = () => {
+const Home = ({ page, show, pageChange, closeModal }) => {
   let [quote, setQuote] = useState({
     text: '',
     author: ''
   });
+  let [token, setToken] = useState();
+
+  if (!token) {
+    return <Landing show={show} page={page} pageChange={pageChange} closeModal={closeModal} />
+  }
 
   useEffect(() => {
     genQuote();

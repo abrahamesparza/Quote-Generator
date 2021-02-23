@@ -41,17 +41,9 @@ app.use(cors({credentials:true, origin: 'localhost:3003'}));
 /* establishes session on app render */
 app.get('/session', (req, res) => {
   req.session.isAuth = true;
-  // let sessionId = req.session.id; //consoles session id
+  let sessionId = req.session.id;
   console.log('sessionId:', sessionId);
-  // want to create session with session schema using this
-  // need to create a POST route to put the create in
-  // add function to App.js with post route
-  // invoke in useEffect after getSession - call it 'postSession'
-  Sessions.create(sessionId, (err, data) => {
-    // console.log('data', data) //consoles nothing
-    if (err) res.status(400).send('Error storing session');
-    else res.status(200).send(data);
-  });
+  res.status(200).send('Session created');
 });
 
 app.get('/existing/sessions', (req, res) => {

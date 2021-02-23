@@ -10,7 +10,7 @@ const Page = ({ show, closeModal, pageChange, page }) => {
   } else if (page === 'login') {
     return <LogIn show={show} pageChange={pageChange} closeModal={closeModal}/>
   } else if (page === 'home') {
-    return <Home />
+    return <Home page={page} show={show} pageChange={pageChange} closeModal={closeModal}/>
   } else if (page === 'about') {
     return <About />
   }
