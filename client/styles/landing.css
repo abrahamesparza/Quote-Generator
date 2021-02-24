@@ -1,5 +1,10 @@
-body {
-  background-image: url("../../images/pluh.jpeg");
-  background-repeat: no-repeat;
-  max-width: 100%;
+.landing {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.landingText {
+  text-align: center;
+  font-size: 54px;
+  text-shadow: rgb(255, 255, 255) -3px 3px;
 }

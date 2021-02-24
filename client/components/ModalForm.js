@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/modal.css'
+import Landing from './Landing.js';
+
 import {
   BrowserRouter as Router,
   Link,
@@ -9,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 
-const ModalForm = ({ show, closeModal, pageChange }) => {
+const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
   if (!show) {
     return null;
   }
@@ -34,12 +36,31 @@ const ModalForm = ({ show, closeModal, pageChange }) => {
     setUser({[e.target.name]: e.target.value});
     axios.post('/new/user', data, { withCredentials: true })
     .then(res => {
-      console.log('res:`', res)
-      window.location.href = '/'
+      res = res.data;
+      console.log('res', res)
+      if (res === 'user exists') {
+        alert('Account exists with provided email. Log in, or use another email.');
+        show = true;
+      } else {
+        show = false;
+        alert('Welcome :)')
+      }
     })
-    .catch(err => console.error(err))
+    .catch(err => console.error('error', err))
   }
-  console.log('Sign up page')
+
+  let timer = () => {
+    setTimeout(() => {
+      if (show === true) {
+        closeModal();
+        switchView('landing')
+      } else {
+        closeModal();
+        switchView('home');
+      }
+    }, 500)
+  }
+
   return (
     <Router>
       <div className='form-container'>
@@ -65,7 +86,7 @@ const ModalForm = ({ show, closeModal, pageChange }) => {
           </label><br/>
           <input  type='password' name='password' onChange={handleChange}/><br/><br/>
 
-          <input type='submit' className='submitBtn' value='Sign Up' onClick={closeModal} />
+          <input type='submit' className='submitBtn' value='Sign Up' onClick={timer} />
 
           {/* want to redirect url to /login upon click of form change, but not working atm */}
           {/* <Link className='link' to='/login'> */}

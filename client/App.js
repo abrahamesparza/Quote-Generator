@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const App = () => {
   let [show, setShow] = useState(false);
-  let [page, setPage] = useState('home');
+  let [page, setPage] = useState('landing');
 
   useEffect(() => {
     getSession();
@@ -56,7 +56,7 @@ const App = () => {
     <div className='container'>
       <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} />
       <Aside />
-      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} />
+      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} switchView={switchView}/>
       <Footer />
     </div>
   )

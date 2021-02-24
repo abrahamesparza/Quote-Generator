@@ -10,11 +10,6 @@ const Home = ({ page, show, pageChange, closeModal }) => {
     text: '',
     author: ''
   });
-  let [token, setToken] = useState();
-
-  if (!token) {
-    return <Landing show={show} page={page} pageChange={pageChange} closeModal={closeModal} />
-  }
 
   useEffect(() => {
     genQuote();

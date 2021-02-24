@@ -32,6 +32,9 @@ app.use(session({
   secret: 'key to sign cookie',
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    maxAge: 600000
+  },
   store: store
 }));
 app.use(bodyParser.json());
@@ -75,11 +78,13 @@ app.get('/users', (req, res) => {
   });
 });
 
-app.post('/new/user', async (req, res) => {
+app.post('/new/user', (req, res) => {
   let userData = req.body;
-  let user = await Users.findOne({email:userData.email})
-  if (user) {
-    res.status(401).send('Account exists with email');
+  let user = Users.findOne({email:userData.email})
+  console.log('user', user)
+  console.log('email', userData.email)
+  if (user.email === userData.email) {
+    res.send('user exists');
   } else {
     bcrypt.hash(userData.password, saltRounds, (err, hash) => {
       userData.password = hash;
@@ -87,7 +92,7 @@ app.post('/new/user', async (req, res) => {
       Users.create(userData, (err, data) => {
         console.log('created user:', data);
         if (err) res.status(500).send(err);
-        else res.status(200).send(data);
+        else res.status(200).send('Success');
       });
     });
   }
