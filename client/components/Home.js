@@ -16,14 +16,20 @@ const Home = ({ page, show, pageChange, closeModal }) => {
   }, []);
 
   let genQuote = () => {
-    axios.get('https://type.fit/api/quotes')
+    /*
+    updated api - previous api stopped working
+      need to populate database with quote info
+      so i don't depend on this api's availibility
+    */
+    axios.get('https://api.quotable.io/random')
     .then(res => {
+      console.log('res:', res);
       let data = res.data;
-        let random = Math.floor(Math.random() * data.length);
-        let assigned = data[random];
+        // let random = Math.floor(Math.random() * data.length);
+        // let assigned = data[random];
         setQuote({
-          text: assigned.text,
-          author: assigned.author
+          text: data.content,
+          author: data.author
         });
     })
     .catch(err => console.error(err))
