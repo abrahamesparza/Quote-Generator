@@ -52,11 +52,21 @@ const App = () => {
     setPage(target);
   };
 
+  let showLogin = () => {
+    if (show === false) {
+      setShow(true);
+      switchView('login');
+    } else {
+      setShow(false);
+      switchView('home');
+    }
+  }
+
   return (
     <div className='container'>
-      <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} />
+      <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} showLogin={showLogin}/>
       <Aside />
-      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} switchView={switchView}/>
+      <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} switchView={switchView} />
       <Footer />
     </div>
   )

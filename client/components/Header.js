@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/header.css';
 import About from './About.js';
 import Home from './Home.js';
+import LogIn from './LogIn.js';
 
 import {
   BrowserRouter as Router,
@@ -10,7 +11,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Header = ( { showModal, closeModal, switchView } ) => {
+const Header = ( { showModal, closeModal, switchView, showLogin } ) => {
   return (
     <Router>
       <header>
@@ -23,6 +24,9 @@ const Header = ( { showModal, closeModal, switchView } ) => {
         </Link>
         <Link className='link' to='/signup'>
           <div onClick={showModal}>Sign Up</div>
+        </Link>
+        <Link className='link' to='/login'>
+          <div onClick={showLogin}>Log In</div>
         </Link>
       </header>
     </Router>

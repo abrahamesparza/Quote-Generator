@@ -3,7 +3,7 @@ import '../styles/modal.css';
 import axios from 'axios';
 
 
-const LogIn = ({ show, pageChange, closeModal}) => {
+const LogIn = ({ show, pageChange, closeModal, switchView}) => {
   if (!show) {
     return null;
   }
@@ -25,10 +25,29 @@ const LogIn = ({ show, pageChange, closeModal}) => {
     let data = login;
     axios.post('/login/user', data)
     .then(res => {
-      window.location.href = '/';
-      console.log('res:', res);
+      let msg = res.data;
+      if (msg === 'account does not exist with provided email') {
+        alert('account does not exist with provided email')
+        show = true;
+      } else {
+        alert('Welcome back :)');
+        show = false;
+      }
     })
-    .catch(err => alert('Password failed. Try again.'))
+    .catch(err => {
+      alert('Password failed. Try again.')
+    })
+  }
+
+  let timer = () => {
+    setTimeout(() => {
+      if (show === true) {
+        return null;
+      } else {
+        closeModal();
+        switchView('home');
+      }
+    }, 500)
   }
 
   return (
@@ -45,7 +64,7 @@ const LogIn = ({ show, pageChange, closeModal}) => {
         </label><br/>
         <input type='password' name='password' onChange={handleChange}/><br/><br/>
 
-        <input className='loginBtn' type='submit' value='Log In' onClick={closeModal}/><br/>
+        <input className='loginBtn' type='submit' value='Log In' onClick={timer}/><br/>
         <p className='newMemberLink' onClick={pageChange}>Not a member?</p>
       </form>
     </div>
