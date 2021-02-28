@@ -31,8 +31,13 @@ app.get('/', (req, res) => {
   res.status(200).send('HELLO ABRAHAM');
 });
 
+// checks if user is authenticated to access home page
 app.get('/home', auth, (req, res) => {
   res.status(200).send('Success');
+})
+// checks if theres a valid token
+app.get('/checkToken', auth, (req, res) => {
+  res.sendStatus(200);
 })
 
 /* authentication API */
