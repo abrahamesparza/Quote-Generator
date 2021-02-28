@@ -57,12 +57,12 @@ const LogIn = ({ show, pageChange, closeModal, switchView}) => {
         <label className='form-text'>
         Email:
         </label><br/>
-        <input type='email' name='email' onChange={handleChange}/><br/><br/>
+        <input type='email' name='email' onChange={handleChange} required/><br/><br/>
 
         <label className='form-text'>
         Password:
         </label><br/>
-        <input type='password' name='password' onChange={handleChange}/><br/><br/>
+        <input type='password' name='password' onChange={handleChange} required/><br/><br/>
 
         <input className='loginBtn' type='submit' value='Log In' onClick={timer}/><br/>
         <p className='newMemberLink' onClick={pageChange}>Not a member?</p>

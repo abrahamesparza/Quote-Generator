@@ -11,12 +11,12 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Header = ( { showModal, closeModal, switchView, showLogin } ) => {
+const Header = ( { showModal, closeModal, switchView, showLogin, authHome } ) => {
   return (
     <Router>
       <header>
         <Link className='link' to='/' >
-          <div onClick={() => switchView('home')}>Home</div>
+          <div onClick={() => [ authHome(), switchView('home')]}>Home</div>
         </Link>
         <Link className='link' to='/about'>
         {/* add a page state, on click change state to about */}

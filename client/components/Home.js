@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react';
 import '../styles/home.css';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
-import Landing from './Landing';
 
-const Home = ({ page, show, pageChange, closeModal }) => {
+const Home = ({ page, show, pageChange, closeModal, authHome }) => {
   let [quote, setQuote] = useState({
     text: '',
     author: ''
   });
 
   useEffect(() => {
+    authHome();
     genQuote();
   }, []);
 

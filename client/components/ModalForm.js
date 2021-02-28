@@ -69,22 +69,22 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
           <label className='form-text'>
             First Name:
           </label><br/>
-          <input  type='text' name='firstName' onChange={handleChange}/><br/><br/>
+          <input  type='text' name='firstName' onChange={handleChange} required/><br/><br/>
 
           <label className='form-text'>
             Last Name:
           </label><br/>
-          <input  type='text' name='lastName' onChange={handleChange}/><br/><br/>
+          <input  type='text' name='lastName' onChange={handleChange} required/><br/><br/>
 
           <label className='form-text'>
             Email:
           </label><br/>
-          <input  type='email' name='email' onChange={handleChange}/><br/><br/>
+          <input  type='email' name='email' onChange={handleChange} required/><br/><br/>
 
           <label className='form-text'>
             Password:
           </label><br/>
-          <input  type='password' name='password' onChange={handleChange}/><br/><br/>
+          <input  type='password' name='password' onChange={handleChange} required/><br/><br/>
 
           <input type='submit' className='submitBtn' value='Sign Up' onClick={timer} />
 
