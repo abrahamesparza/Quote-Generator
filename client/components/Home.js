@@ -23,10 +23,13 @@ const Home = ({ page, show, pageChange, closeModal }) => {
     */
     axios.get('https://api.quotable.io/random')
     .then(res => {
-      console.log('res:', res);
       let data = res.data;
-        // let random = Math.floor(Math.random() * data.length);
-        // let assigned = data[random];
+      /* use below for /quotes endpoint */
+      // let data = res.data.results;
+      // console.log('res:', data);
+      //   let random = Math.floor(Math.random() * data.length);
+      //   let assigned = data[random];
+      /* use above for /quotes endpoint */
         setQuote({
           text: data.content,
           author: data.author
