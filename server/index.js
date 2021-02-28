@@ -102,7 +102,7 @@ app.post('/login/user', (req, res) => {
   let userData = req.body;
   Users.findOne({ email: userData.email })
   .then(user => {
-    if (!user) res.status(400).json({message: 'user does not exist'})
+    if (!user) res.send('account does not exist with provided email')
     else {
       bcrypt.compare(userData.password, user.password, (err, data) => {
         if (err) console.log('err', err);
