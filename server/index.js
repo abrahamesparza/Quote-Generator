@@ -2,7 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path');
 const cors = require('cors');
-const connectionUrl= require('../database/url.js').connectionUrl;
+
+const jwt = require('jsonwebtoken');
+const secret = 'secretToSignToken'
+
+const cookieParser = require('cookie-parser');
 
 const port = process.env.PORT || 3003;
 
@@ -10,63 +14,58 @@ const db = require('../database/db.js')
 const { Users } = require('../database/signupSchema.js');
 const { Logins } = require('../database/loginSchema.js');
 const { Quotes } = require('../database/quoteSchema.js');
-const { Sessions } = require('../database/sessionSchema.js');
 
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const MongoSession = require ('connect-mongodb-session')(session);
-
-const store = new MongoSession({
-  uri: connectionUrl,
-  collection: 'sessions'
-})
+const auth = require('./middleware/auth.js');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-
-
 const app = express();
-app.use(cookieParser());
-app.use(session({
-  secret: 'key to sign cookie',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 600000
-  },
-  store: store
-}));
 app.use(bodyParser.json());
 app.use(express.static(path.join('public')));
 app.use(cors({credentials:true, origin: 'localhost:3003'}));
+app.use(cookieParser());
 
-/* establishes session on app render */
-app.get('/session', (req, res) => {
-  req.session.isAuth = true;
-  let sessionId = req.session.id;
-  console.log('sessionId:', sessionId);
-  res.status(200).send('Session created');
-});
-
-app.get('/existing/sessions', (req, res) => {
-  Sessions.find((err, data) => {
-    if (err) res.status(400).send(err);
-    else res.status(200).send(data);
-  })
-})
 
 app.get('/', (req, res) => {
   res.status(200).send('HELLO ABRAHAM');
 });
 
-/* cookie test route */
-app.get('/cookies', (req, res) => {
-  console.log('/cookies route', req.cookies);
-  if (!req.cookies.token) res.status(401).send('error')
-  else res.status(200).json({ secret: 'hello mello jello'})
+app.get('/home', auth, (req, res) => {
+  res.status(200).send('Success');
 })
-/* cookie test route */
+
+/* authentication API */
+
+app.post('/authenticate', (req, res) => {
+  const { email, password } = req.body;
+  Users.findOne({ email: email }, (err, user) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({error: 'Internal error please try again'});
+    } else if (!user) {
+      res.status(401).json({error: 'Incorrect email or password'})
+    } else {
+      Users.validatePassword(password, (err, match) => {
+        if (err) {
+          res.status(500).json({error: 'Internal error please try again'});
+        } else if (!match) {
+          res.status(401).json({error: 'Incorrect email or password'});
+        } else {
+          const payload = { email };
+          const token = jwt.sign(payload, secret, {
+            expiresIn:'1h'
+          });
+          res.cookie('token', token, {
+            httpOnly: true
+          }).sendStatus(200);
+        }
+      });
+    }
+  });
+});
+
+/* authentication API */
 
 /* USER ROUTES */
 
