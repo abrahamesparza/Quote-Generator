@@ -8,7 +8,7 @@ const secret = 'secretToSignToken'
 
 const cookieParser = require('cookie-parser');
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3005;
 
 const db = require('../database/db.js')
 const { Users } = require('../database/signupSchema.js');
