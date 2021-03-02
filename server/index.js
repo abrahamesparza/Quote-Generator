@@ -102,9 +102,7 @@ app.post('/new/user', (req, res) => {
             exp: 3600,
             data: payload,
           }, secret)
-          res.cookie('token', token, {
-            httpOnly: true
-          }).redirect('/checkToken');
+          res.cookie('token', token).redirect('/checkToken');
         }
       });
     });
@@ -126,9 +124,7 @@ app.post('/login/user', (req, res) => {
             exp: 3600,
             data: payload,
           }, secret)
-          res.cookie('token', token, {
-            httpOnly: true
-          }).redirect('/checkToken');
+          res.cookie('token', token).redirect('/checkToken');
         }
         else if (userData.password !== user.password) {
           res.status(400).send('invalid password');
