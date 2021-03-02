@@ -11,7 +11,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-const Header = ( { showModal, closeModal, switchView, showLogin, authHome } ) => {
+const Header = ( { showModal, closeModal, switchView, showLogin, authHome, clearToken } ) => {
   return (
     <Router>
       <header>
@@ -27,6 +27,9 @@ const Header = ( { showModal, closeModal, switchView, showLogin, authHome } ) =>
         </Link>
         <Link className='link' to='/login'>
           <div onClick={showLogin}>Log In</div>
+        </Link>
+        <Link className='link' to='/logout'>
+          <div onClick={clearToken}>Log Out</div>
         </Link>
       </header>
     </Router>

@@ -85,9 +85,20 @@ const App = () => {
     }
   }
 
+  let clearToken = () => {
+    // let cookie = document.cookie.split('=')[1];
+    let cookie = document.cookie;
+    document.cookie = cookie+';max-age=0';
+    cookie = document.cookie;
+    console.log('cookie has been deleted');
+    // delete cookie.token;
+    // console.log('cookie after delete', cookie);
+    authHome();
+  }
+
   return (
     <div className='container'>
-      <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} showLogin={showLogin} authHome={authHome}/>
+      <Header showModal={showModal} closeModal={closeModal} page={page} switchView={switchView} showLogin={showLogin} authHome={authHome} clearToken={clearToken}/>
       <Aside />
       <Main show={show} closeModal={closeModal} pageChange={pageChange} page={page} switchView={switchView} authHome={authHome}/>
       <Footer />
