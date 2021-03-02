@@ -64,7 +64,7 @@ const App = () => {
       })
       .catch(err => console.error(err));
     } else {
-      return null;
+      setPage('home')
     }
   }
 

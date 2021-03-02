@@ -51,13 +51,15 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
 
   let timer = () => {
     setTimeout(() => {
-      if (show === true) {
-        closeModal();
-        switchView('landing')
-      } else {
-        closeModal();
-        switchView('home');
-      }
+      closeModal();
+      switchView('home')
+      // if (show === true) {
+      //   closeModal();
+      //   switchView('landing')
+      // } else {
+      //   closeModal();
+      //   switchView('home');
+      // }
     }, 500)
   }
 
