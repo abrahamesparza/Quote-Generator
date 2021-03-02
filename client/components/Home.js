@@ -21,18 +21,14 @@ const Home = ({ page, show, pageChange, closeModal, authHome }) => {
       need to populate database with quote info
       so i don't depend on this api's availibility
     */
-    axios.get('https://api.quotable.io/random')
+    axios.get('https://type.fit/api/quotes')
     .then(res => {
       let data = res.data;
-      /* use below for /quotes endpoint */
-      // let data = res.data.results;
-      // console.log('res:', data);
-      //   let random = Math.floor(Math.random() * data.length);
-      //   let assigned = data[random];
-      /* use above for /quotes endpoint */
+        let random = Math.floor(Math.random() * data.length);
+        let assigned = data[random];
         setQuote({
-          text: data.content,
-          author: data.author
+          text: assigned.text,
+          author: assigned.author
         });
     })
     .catch(err => console.error(err))
