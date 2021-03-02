@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
   } else {
     jwt.verify(token, secret, (err, decoded) => {
       if (err) {
-        res.status(401).send('Unauthorized: Invalid token');
+        res.send('Unauthorized: Invalid token');
       } else {
         req.email = decoded.email;
         next();
