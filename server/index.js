@@ -118,6 +118,7 @@ app.post('/login/user', (req, res) => {
     if (!user) res.send('account does not exist with provided email')
     else {
       bcrypt.compare(userData.password, user.password, (err, data) => {
+        console.log('DAAATA', user);
         if (err) console.log('err', err);
         else if (data) {
           const payload = userData.email;
@@ -128,8 +129,9 @@ app.post('/login/user', (req, res) => {
           res.cookie('token', token, {
             httpOnly: true
           }).redirect('/checkToken');
-        } else {
-          res.status(400).json({message: 'invalid password'})
+        }
+        else if (userData.password !== user.password) {
+          res.status(400).send('invalid password');
         }
       })
     }
