@@ -96,7 +96,19 @@ app.post('/new/user', (req, res) => {
       Users.create(userData, (err, data) => {
         console.log('created user:', data);
         if (err) res.status(500).send(err);
-        else res.status(200).send('Success');
+        else {
+          const payload = userData.email;
+          // let token = jwt.sign(payload, secret, {
+          //   exp:'1h'
+          // });
+          let token = jwt.sign({
+            exp: 3600,
+            data: payload,
+          }, secret)
+          res.cookie('token', token, {
+            httpOnly: true
+          }).redirect('/checkToken');
+        }
       });
     });
   }
