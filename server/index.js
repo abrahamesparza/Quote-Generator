@@ -98,9 +98,6 @@ app.post('/new/user', (req, res) => {
         if (err) res.status(500).send(err);
         else {
           const payload = userData.email;
-          // let token = jwt.sign(payload, secret, {
-          //   exp:'1h'
-          // });
           let token = jwt.sign({
             exp: 3600,
             data: payload,
@@ -123,7 +120,14 @@ app.post('/login/user', (req, res) => {
       bcrypt.compare(userData.password, user.password, (err, data) => {
         if (err) console.log('err', err);
         else if (data) {
-          res.status(200).json({message: 'login verified!'})
+          const payload = userData.email;
+          let token = jwt.sign({
+            exp: 3600,
+            data: payload,
+          }, secret)
+          res.cookie('token', token, {
+            httpOnly: true
+          }).redirect('/checkToken');
         } else {
           res.status(400).json({message: 'invalid password'})
         }
