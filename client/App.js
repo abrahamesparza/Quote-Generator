@@ -12,6 +12,23 @@ const App = () => {
   let [show, setShow] = useState(false);
   let [page, setPage] = useState('landing');
 
+  useEffect(() => {
+    assignPage();
+  }, []);
+
+  let assignPage = () => {
+    axios.get('/home')
+    .then(res => {
+      let msg = res.data;
+      if (msg === 'Unauthorized: No token provided') {
+        setPage('landing')
+      } else {
+        setPage('home');
+      }
+    })
+    .catch(err => console.error(err));
+  }
+
   let showModal = () => {
     if (show === false) {
       setShow(true)

@@ -52,19 +52,11 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
   let timer = () => {
     setTimeout(() => {
       closeModal();
-      switchView('home')
-      // if (show === true) {
-      //   closeModal();
-      //   switchView('landing')
-      // } else {
-      //   closeModal();
-      //   switchView('home');
-      // }
+      switchView('home');
     }, 500)
   }
 
   return (
-    <Router>
       <div className='form-container'>
       <h3>Sign Up</h3>
         <form className='form-space' onSubmit={onSubmit}>
@@ -97,7 +89,6 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
 
         </form>
       </div>
-    </Router>
   )
 };
 

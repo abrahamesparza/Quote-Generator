@@ -23,30 +23,30 @@ const LogIn = ({ show, pageChange, closeModal, switchView}) => {
   let onSubmit = (e) => {
     e.preventDefault();
     let data = login;
-    axios.post('/login/user', data)
+    axios.post('/login/user', data, {withCredentials: true})
     .then(res => {
       let msg = res.data;
       if (msg === 'account does not exist with provided email') {
-        alert('account does not exist with provided email')
+        alert('Invalid email')
         show = true;
-      } else {
+      } else if (msg === 'invalid password') {
+        alert('Invalid password')
+        show = true;
+      }
+      else {
         alert('Welcome back :)');
         show = false;
       }
     })
     .catch(err => {
-      alert('Password failed. Try again.')
+      console.error(err);
     })
   }
 
   let timer = () => {
     setTimeout(() => {
-      if (show === true) {
-        return null;
-      } else {
-        closeModal();
-        switchView('home');
-      }
+      closeModal();
+      switchView('home');
     }, 500)
   }
 
