@@ -4,7 +4,7 @@ import '../styles/home.css';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
-const Home = ({ page, show, pageChange, closeModal, authHome }) => {
+const Home = ({ authHome }) => {
   let [quote, setQuote] = useState({
     text: '',
     author: ''
@@ -16,11 +16,6 @@ const Home = ({ page, show, pageChange, closeModal, authHome }) => {
   }, []);
 
   let genQuote = () => {
-    /*
-    updated api - previous api stopped working
-      need to populate database with quote info
-      so i don't depend on this api's availibility
-    */
     axios.get('https://type.fit/api/quotes')
     .then(res => {
       let data = res.data;
