@@ -2,24 +2,43 @@
   overflow-y: scroll;
   max-width: 100%;
   margin-top: -5%;
+  color: rgb(56, 56, 56);
 }
 .pageTitle {
   text-align: center;
   font-size: 42px;
+  color: rgb(56, 56, 56);
 }
 .aboutDescription {
   display: flex;
   text-align: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   font-size: 28px;
   font-family: "Bebas Neue", cursive;
   margin-top: -3%;
+  color: rgb(56, 56, 56);
 }
-h2.loremIpsum {
-  color: rgb(235, 235, 235);
+h2 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-left: -5px;
+  color: rgb(56, 56, 56);
 }
-p.loremIpsum {
-  color: rgb(235, 235, 235);
+
+ul {
+  display: flex;
+  width: 100%;
+  margin-top: -5%;
+}
+li {
+  margin: -10px;
+  color: rgb(56, 56, 56);
+}
+
+span {
+  width: 100%;
+  border-bottom: 2px solid rgb(56, 56, 56);
 }

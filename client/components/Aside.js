@@ -30,7 +30,6 @@ const Aside = () => {
     })
     .catch(err => console.error(err));
   };
-
   return (
     <aside>
     <h2>Favorite Quotes</h2>
