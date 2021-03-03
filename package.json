@@ -41,5 +41,8 @@
     "react-router-dom": "^5.2.0",
     "url-loader": "^4.1.1"
   },
-  "proxy": "http://localhost:3005"
+  "proxy": "http://localhost:3005",
+  "engines": {
+    "node": "14.x"
+  }
 }
