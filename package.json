@@ -1,6 +1,9 @@
 {
   "name": "selfmarket-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "****",
   "main": "server/index.js",
   "scripts": {
@@ -41,8 +44,5 @@
     "react-router-dom": "^5.2.0",
     "url-loader": "^4.1.1"
   },
-  "proxy": "http://localhost:3005",
-  "engines": {
-    "node": "14.x"
-  }
+  "proxy": "http://localhost:3005"
 }
