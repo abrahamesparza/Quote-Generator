@@ -37,7 +37,6 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
     axios.post('/new/user', data, { withCredentials: true })
     .then(res => {
       res = res.data;
-      console.log('res', res)
       if (res === 'user exists') {
         alert('Account exists with provided email. Log in, or use another email.');
         show = true;
