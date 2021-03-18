@@ -75,7 +75,6 @@ const App = () => {
       axios.get('/home')
       .then(res => {
         if (res.data === 'Unauthorized: No token provided') {
-          alert('Unauthorized: No token provided');
           setPage('landing');
         }
       })

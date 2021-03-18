@@ -38,11 +38,9 @@ const ModalForm = ({ show, closeModal, pageChange, page, switchView }) => {
     .then(res => {
       res = res.data;
       if (res === 'user exists') {
-        alert('Account exists with provided email. Log in, or use another email.');
         show = true;
       } else {
         show = false;
-        alert('Welcome :)')
       }
     })
     .catch(err => console.error('error', err))
