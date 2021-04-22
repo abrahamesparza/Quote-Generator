@@ -147,6 +147,11 @@ app.post('/favorite/quote', (req, res) => {
   });
 });
 
+/*
+modify to fetch quotes based on logged in users ID in database
+need to .find() in Users table
+based on that Users ID, grab return their favorite quotes
+*/
 app.get('/favorites', (req, res) => {
   Quotes.find( {favorite: true} , (err, data) => {
     if (err) res.status(500).send('Error');

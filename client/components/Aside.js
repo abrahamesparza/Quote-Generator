@@ -10,6 +10,11 @@ const Aside = () => {
     getFavorites();
   }, [favorites]);
 
+  /*
+  determine if a user is logged in
+  if the user is logged in, return their favorite quotes (need to modify the users schema to keep record of which quotes the user has favorited)
+  if no user is logged in, do not get favorite quotes
+  */
   let getFavorites = () => {
     axios.get('/favorites')
     .then(res => {
